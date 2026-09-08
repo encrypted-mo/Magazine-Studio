@@ -6,7 +6,7 @@ import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
   title: 'Magazine',
-  projectId: 'oyhdgnse',
+  projectId: '0yhdgnse',
   dataset: 'production',
   plugins: [structureTool(), visionTool()],
   schema: {
