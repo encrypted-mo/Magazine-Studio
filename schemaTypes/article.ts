@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity'
+import {defineType, defineField} from 'sanity'
 
 export default defineType({
   name: 'article',
@@ -10,6 +10,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -19,6 +20,7 @@ export default defineType({
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -28,13 +30,15 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: [{ type: 'category' }],
+      to: [{type: 'category'}],
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -44,7 +48,7 @@ export default defineType({
       of: [
         {
           type: 'reference',
-          to: [{ type: 'tag' }],
+          to: [{type: 'tag'}],
         },
       ],
       options: {
@@ -56,7 +60,8 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{ type: 'author' }],
+      to: [{type: 'author'}],
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -69,6 +74,7 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -76,9 +82,15 @@ export default defineType({
       title: 'Body',
       type: 'array',
       of: [
-        { type: 'block' },
-        { type: 'image' },
+        {type: 'block'},
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
       ],
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

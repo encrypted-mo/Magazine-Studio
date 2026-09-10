@@ -1,8 +1,8 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'category',
-  title: 'Category',
+  name: 'page',
+  title: 'Page',
   type: 'document',
 
   fields: [
@@ -27,6 +27,7 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -36,6 +37,22 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'array',
+      of: [
+        {type: 'block'},
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

@@ -1,48 +1,39 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'author',
-  title: 'Author',
+  name: 'siteSettings',
+  title: 'Site Settings',
   type: 'document',
 
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'siteName',
+      title: 'Site Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-      },
+      name: 'siteUrl',
+      title: 'Site URL',
+      type: 'url',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'role',
-      title: 'Role',
-      type: 'string',
+      name: 'description',
+      title: 'Description',
+      type: 'text',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'image',
-      title: 'Profile Image',
+      name: 'coverImage',
+      title: 'Cover Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-
-    defineField({
-      name: 'bio',
-      title: 'Bio',
-      type: 'text',
     }),
 
     defineField({
@@ -64,9 +55,21 @@ export default defineType({
     }),
 
     defineField({
+      name: 'youtube',
+      title: 'YouTube',
+      type: 'url',
+    }),
+
+    defineField({
       name: 'linkedin',
       title: 'LinkedIn',
       type: 'url',
+    }),
+
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      type: 'email',
     }),
   ],
 })
